@@ -1,0 +1,25 @@
+<resources>
+
+  <!-- Base application theme. -->
+  <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+  </style>
+
+  <style name="BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+    <item name="itemBackground">@drawable/background_bottom_nav_item</item>
+    <item name="itemIconTint">@android:color/white</item>
+    <item name="itemTextColor">@android:color/white</item>
+    <item name="itemTextAppearanceActive">@style/TextAppearance.BottomNavigation.Overline</item>
+    <item name="android:textAllCaps">true</item>
+    <item name="paddingStart">32dp</item>
+    <item name="paddingEnd">32dp</item>
+  </style>
+
+  <style name="TextAppearance.BottomNavigation.Overline" parent="TextAppearance.MaterialComponents.Overline">
+    <item name="android:textSize">8sp</item>
+  </style>
+
+</resources>
