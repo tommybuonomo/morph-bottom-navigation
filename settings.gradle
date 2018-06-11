@@ -1,1 +1,2 @@
-include ':app'
+include ':app', ':magicshapepath'
+project(':magicshapepath').projectDir = new File(settingsDir, '../library/magicshapepath')
