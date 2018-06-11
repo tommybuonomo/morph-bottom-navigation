@@ -5,13 +5,15 @@ import android.graphics.Paint
 import android.view.Menu
 import com.google.android.material.shape.EdgeTreatment
 import com.google.android.material.shape.ShapePath
-import com.tbuonomo.morphbottomnavigationsample.MagicShapePath.CircleShape
-import com.tbuonomo.morphbottomnavigationsample.MagicShapePath.Mode
-import com.tbuonomo.morphbottomnavigationsample.MagicShapePath.ShiftMode
+import com.tbuonomo.magicshapepath.MagicShapePath
+import com.tbuonomo.magicshapepath.MagicShapePath.CircleShape
+import com.tbuonomo.magicshapepath.MagicShapePath.PathDirection
+import com.tbuonomo.magicshapepath.MagicShapePath.ShiftMode
 
-class MorphBottomNavigationViewTopEdgeTreatment(private val menu: Menu, private val height: Float, open var morphItemRadius: Float,
-        open var morphVerticalOffset: Float,
-        open var morphCornerRadius: Float) :
+class MorphBottomNavigationViewTopEdgeTreatment(private val menu: Menu,
+        var morphItemRadius: Float,
+        var morphVerticalOffset: Float,
+        var morphCornerRadius: Float) :
         EdgeTreatment() {
 
   lateinit var easyShapePath: MagicShapePath
@@ -39,12 +41,12 @@ class MorphBottomNavigationViewTopEdgeTreatment(private val menu: Menu, private 
         val centerX = itemWidth * i + itemRadius
         val centerY = morphVerticalOffset + centerRadius - morphHeightOffset
 
-        val centerCircle = CircleShape(centerX, centerY, centerRadius, Mode.CLOCKWISE)
+        val centerCircle = CircleShape(centerX, centerY, centerRadius, PathDirection.CLOCKWISE)
 
-        val leftCircle = CircleShape(centerX, morphVerticalOffset - borderRadius, borderRadius, Mode.C_CLOCKWISE)
+        val leftCircle = CircleShape(centerX, morphVerticalOffset - borderRadius, borderRadius, PathDirection.C_CLOCKWISE)
         centerCircle.shiftOutside(leftCircle, ShiftMode.LEFT)
 
-        val rightCircle = CircleShape(centerX, morphVerticalOffset - borderRadius, borderRadius, Mode.C_CLOCKWISE)
+        val rightCircle = CircleShape(centerX, morphVerticalOffset - borderRadius, borderRadius, PathDirection.C_CLOCKWISE)
         centerCircle.shiftOutside(rightCircle, ShiftMode.RIGHT)
 
         easyShapePath.addCircles(leftCircle, centerCircle, rightCircle)

@@ -89,7 +89,6 @@ class MorphBottomNavigationView : BottomNavigationView, OnNavigationItemSelected
 
     topEdgeTreatment = MorphBottomNavigationViewTopEdgeTreatment(
             menu,
-            height,
             morphItemRadius,
             morphVerticalOffset,
             morphCornerRadius)
