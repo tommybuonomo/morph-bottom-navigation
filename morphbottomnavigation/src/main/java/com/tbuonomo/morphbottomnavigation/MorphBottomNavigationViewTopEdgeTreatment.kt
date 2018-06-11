@@ -1,4 +1,4 @@
-package com.tbuonomo.morphbottomnavigationsample
+package com.tbuonomo.morphbottomnavigation
 
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -26,6 +26,8 @@ class MorphBottomNavigationViewTopEdgeTreatment(private val menu: Menu,
 
     for (i in 0 until menu.size()) {
       var morphHeightOffset = 0f
+
+      //Draw only select and last selected path
       if (i == selectedItem || i == lastSelectedItem) {
         if (i == selectedItem) {
           morphHeightOffset = interpolation * morphVerticalOffset

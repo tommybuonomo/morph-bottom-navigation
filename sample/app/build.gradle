@@ -32,6 +32,6 @@ dependencies {
   api 'androidx.appcompat:appcompat:1.0.0-alpha3'
   api 'androidx.core:core:1.0.0-alpha3'
   api 'com.google.android.material:material:1.0.0-alpha3'
-  implementation 'androidx.constraintlayout:constraintlayout:1.1.0'
-  implementation 'com.tbuonomo:magic-shape-path:1.0.0'
+  implementation 'androidx.constraintlayout:constraintlayout:1.1.1'
+  implementation project(':morphbottomnavigation')
 }

@@ -1,4 +1,4 @@
-package com.tbuonomo.morphbottomnavigationsample
+package com.tbuonomo.morphbottomnavigation
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -19,6 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapePathModel
+import com.tbuonomo.magicshapepath.R
 
 class MorphBottomNavigationView : BottomNavigationView, OnNavigationItemSelectedListener {
   private val paint = Paint().apply {
@@ -37,21 +38,21 @@ class MorphBottomNavigationView : BottomNavigationView, OnNavigationItemSelected
 
   private var selectionAnimator: ValueAnimator? = null
 
-  open var morphItemRadius: Float = 0f
+  var morphItemRadius: Float = 0f
     set(radius) {
       field = radius
       topEdgeTreatment.morphItemRadius = radius
       invalidate()
     }
 
-  open var morphCornerRadius: Float = 0f
+  var morphCornerRadius: Float = 0f
     set(radius) {
       field = radius
       topEdgeTreatment.morphCornerRadius = radius
       invalidate()
     }
 
-  open var morphVerticalOffset: Float = 0f
+  var morphVerticalOffset: Float = 0f
     set(offset) {
       field = offset
       topEdgeTreatment.morphVerticalOffset = offset
@@ -62,7 +63,7 @@ class MorphBottomNavigationView : BottomNavigationView, OnNavigationItemSelected
       invalidate()
     }
 
-  open var drawDebug: Boolean = false
+  var drawDebug: Boolean = false
     set(enable) {
       field = enable
       invalidate()
@@ -79,10 +80,9 @@ class MorphBottomNavigationView : BottomNavigationView, OnNavigationItemSelected
     context.theme?.resolveAttribute(R.attr.colorPrimary, typedValue, true)
     val backgroundTint = a.getColor(R.styleable.MorphBottomNavigationView_backgroundTint, typedValue.data)
 
-    val morphItemRadius = a.getDimensionPixelSize(R.styleable.MorphBottomNavigationView_morphItemRadius, dpToPx(32f).toInt()).toFloat()
+    val morphItemRadius = a.getDimensionPixelSize(R.styleable.MorphBottomNavigationView_morphItemRadius, dpToPx(64f).toInt()).toFloat()
     val morphVerticalOffset = a.getDimensionPixelSize(R.styleable.MorphBottomNavigationView_morphVerticalOffset, dpToPx(8f).toInt()).toFloat()
-    val morphCornerRadius = a.getDimensionPixelSize(R.styleable.MorphBottomNavigationView_morphCornerRadius, dpToPx(92f).toInt()).toFloat()
-
+    val morphCornerRadius = a.getDimensionPixelSize(R.styleable.MorphBottomNavigationView_morphCornerRadius, dpToPx(128f).toInt()).toFloat()
     a.recycle()
 
     height = dpToPx(56f)
@@ -97,9 +97,9 @@ class MorphBottomNavigationView : BottomNavigationView, OnNavigationItemSelected
     this.morphVerticalOffset = morphVerticalOffset
     this.morphCornerRadius = morphCornerRadius
 
-    val appBarModel = ShapePathModel()
-    appBarModel.topEdge = topEdgeTreatment
-    materialShapeDrawable = MaterialShapeDrawable(appBarModel)
+    val shapePathModel = ShapePathModel()
+    shapePathModel.topEdge = topEdgeTreatment
+    materialShapeDrawable = MaterialShapeDrawable(shapePathModel)
     materialShapeDrawable.isShadowEnabled = true
     materialShapeDrawable.paintStyle = Style.FILL
     materialShapeDrawable.setTint(backgroundTint)

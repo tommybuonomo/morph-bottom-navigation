@@ -1,0 +1,3 @@
+include ':app', ':magicshapepath', ':morphbottomnavigation'
+project(':magicshapepath').projectDir = new File(settingsDir, '../library/magicshapepath')
+project(':morphbottomnavigation').projectDir = new File(settingsDir, '../library/morphbottomnavigation')
