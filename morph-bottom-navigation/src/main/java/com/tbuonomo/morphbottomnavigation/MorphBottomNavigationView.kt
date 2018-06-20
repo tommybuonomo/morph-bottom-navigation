@@ -7,13 +7,16 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Paint.Style
 import android.graphics.Paint.Style.STROKE
+import android.graphics.Rect
 import android.util.AttributeSet
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
+import androidx.core.view.children
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener
@@ -70,6 +73,9 @@ class MorphBottomNavigationView : BottomNavigationView, OnNavigationItemSelected
 
   constructor(context: Context) : this(context, null)
   constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
+
+  private var bottomNavigationMenuView: BottomNavigationMenuView
+
   constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs,
           defStyleAttr) {
 
@@ -86,8 +92,10 @@ class MorphBottomNavigationView : BottomNavigationView, OnNavigationItemSelected
 
     height = dpToPx(56f)
 
+    bottomNavigationMenuView = getChildAt(0) as BottomNavigationMenuView
+
     topEdgeTreatment = MorphBottomNavigationViewTopEdgeTreatment(
-            menu,
+            bottomNavigationMenuView,
             morphItemRadius,
             morphVerticalOffset,
             morphCornerRadius)
@@ -104,7 +112,6 @@ class MorphBottomNavigationView : BottomNavigationView, OnNavigationItemSelected
     materialShapeDrawable.setTint(backgroundTint)
     background = materialShapeDrawable
 
-    val bottomNavigationMenuView = getBottomNavigationMenuView()
     val menuParams = bottomNavigationMenuView?.layoutParams as FrameLayout.LayoutParams
     menuParams.gravity = (Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL)
 
@@ -117,13 +124,13 @@ class MorphBottomNavigationView : BottomNavigationView, OnNavigationItemSelected
    * Proxy for listener
    */
   override fun setOnNavigationItemSelectedListener(listener: OnNavigationItemSelectedListener?) {
-    super.setOnNavigationItemSelectedListener({
+    super.setOnNavigationItemSelectedListener {
       onNavigationItemSelected(it)
       if (listener !is MorphBottomNavigationView) {
         listener?.onNavigationItemSelected(it)
       }
       true
-    })
+    }
   }
 
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -154,13 +161,6 @@ class MorphBottomNavigationView : BottomNavigationView, OnNavigationItemSelected
     super.onAttachedToWindow()
     // Change height
     layoutParams.height = (height + morphVerticalOffset).toInt()
-  }
-
-  private fun getBottomNavigationMenuView(): BottomNavigationMenuView? {
-    for (i in 0 until childCount) {
-      if (getChildAt(i) is BottomNavigationMenuView) return getChildAt(i) as BottomNavigationMenuView
-    }
-    return null
   }
 
   override fun onDraw(canvas: Canvas) {

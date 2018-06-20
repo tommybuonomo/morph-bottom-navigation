@@ -9,13 +9,18 @@
         android:id="@+id/nav_gallery"
         android:icon="@drawable/icon_gallery"
         android:title="Gallery"/>
-    <!--<item-->
-        <!--android:id="@+id/nav_slideshow"-->
-        <!--android:icon="@drawable/icon_map"-->
-        <!--android:title="Map"/>-->
-    <!--<item-->
-        <!--android:id="@+id/nav_manage"-->
-        <!--android:icon="@drawable/icon_settings"-->
-        <!--android:title="Settings"/>-->
+    <item
+        android:id="@+id/nav_slideshow"
+        android:icon="@drawable/icon_map"
+        android:title="Map"/>
+    <item
+        android:id="@+id/nav_manage"
+        android:icon="@drawable/icon_settings"
+        android:title="Settings"/>
+
+    <item
+        android:id="@+id/nav_camera2"
+        android:icon="@drawable/icon_camera"
+        android:title="Camera 2"/>
   </group>
 </menu>

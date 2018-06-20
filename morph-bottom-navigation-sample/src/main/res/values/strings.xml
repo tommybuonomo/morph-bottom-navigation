@@ -1,6 +1,8 @@
 <resources>
   <string name="app_name">MorphBottomNavigation</string>
   <string name="enable_debug">draw debug</string>
+  <string name="add_item">add item</string>
+  <string name="remove_item">remove item</string>
   <string name="morph_item_radius">Morph Item Radius:</string>
   <string name="morph_corner_radius">Morph Corner Radius:</string>
   <string name="morph_vertical_offset">Morph Vertical Offset:</string>

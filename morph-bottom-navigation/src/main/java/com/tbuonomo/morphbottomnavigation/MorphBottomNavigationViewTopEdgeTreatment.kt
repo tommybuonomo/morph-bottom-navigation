@@ -2,7 +2,12 @@ package com.tbuonomo.morphbottomnavigation
 
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Rect
 import android.view.Menu
+import android.view.View
+import androidx.core.view.forEachIndexed
+import androidx.core.view.isVisible
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.shape.EdgeTreatment
 import com.google.android.material.shape.ShapePath
 import com.tbuonomo.magicshapepath.MagicShapePath
@@ -10,7 +15,7 @@ import com.tbuonomo.magicshapepath.MagicShapePath.CircleShape
 import com.tbuonomo.magicshapepath.MagicShapePath.PathDirection
 import com.tbuonomo.magicshapepath.MagicShapePath.ShiftMode
 
-class MorphBottomNavigationViewTopEdgeTreatment(private val menu: Menu,
+class MorphBottomNavigationViewTopEdgeTreatment(private val bottomNavigationMenuView: BottomNavigationMenuView,
         var morphItemRadius: Float,
         var morphVerticalOffset: Float,
         var morphCornerRadius: Float) :
@@ -24,23 +29,22 @@ class MorphBottomNavigationViewTopEdgeTreatment(private val menu: Menu,
   override fun getEdgePath(length: Float, interpolation: Float, shapePath: ShapePath) {
     easyShapePath = MagicShapePath.create(0f, morphVerticalOffset, length, morphVerticalOffset)
 
-    for (i in 0 until menu.size()) {
+    bottomNavigationMenuView.forEachIndexed { i, view ->
       var morphHeightOffset = 0f
 
-      //Draw only select and last selected path
-      if (i == selectedItem || i == lastSelectedItem) {
+      //Draw only selected and last selected path
+      if (view.isVisible && (i == selectedItem || i == lastSelectedItem)) {
         if (i == selectedItem) {
           morphHeightOffset = interpolation * morphVerticalOffset
         } else if (i == lastSelectedItem) {
           morphHeightOffset = (1 - interpolation) * morphVerticalOffset
         }
 
-        val itemWidth = length / menu.size()
-        val itemRadius = itemWidth / 2
+        val itemRect = view.globalVisibleRect
 
         val centerRadius = morphItemRadius
         val borderRadius = morphCornerRadius
-        val centerX = itemWidth * i + itemRadius
+        val centerX = itemRect.centerX().toFloat()
         val centerY = morphVerticalOffset + centerRadius - morphHeightOffset
 
         val centerCircle = CircleShape(centerX, centerY, centerRadius, PathDirection.CLOCKWISE)
@@ -53,12 +57,21 @@ class MorphBottomNavigationViewTopEdgeTreatment(private val menu: Menu,
 
         easyShapePath.addCircles(leftCircle, centerCircle, rightCircle)
       }
-
-      easyShapePath.applyOn(shapePath)
     }
+
+
+    easyShapePath.applyOn(shapePath)
   }
 
   fun drawDebug(canvas: Canvas, paint: Paint) {
     easyShapePath.drawDebug(canvas, paint)
   }
+
+  private inline val View.globalVisibleRect: Rect
+    get() {
+      val r = Rect()
+      getGlobalVisibleRect(r)
+      return r
+    }
+
 }
