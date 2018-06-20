@@ -40,3 +40,4 @@ local.properties
 
 #Android Studio
 /captures
+/*/keystore.properties

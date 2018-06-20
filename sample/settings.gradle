@@ -1,2 +1,0 @@
-include ':app', ':magicshapepath', ':morphbottomnavigation'
-project(':morphbottomnavigation').projectDir = new File(settingsDir, '../morphbottomnavigation')
