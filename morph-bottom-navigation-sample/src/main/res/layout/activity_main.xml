@@ -159,9 +159,12 @@
       android:id="@+id/bottomNavigationView"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:backgroundTint="@color/colorPrimary"
+      app:backgroundTint="@color/colorPrimary"
       app:layout_constraintBottom_toBottomOf="parent"
       app:menu="@menu/menu_bottom_navigation"
+      app:morphCornerRadius="128dp"
+      app:morphItemRadius="64dp"
+      app:morphVerticalOffset="8dp"
       style="@style/BottomNavigationView"
       />
 
