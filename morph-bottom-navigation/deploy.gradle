@@ -3,7 +3,7 @@ apply plugin: 'com.jfrog.bintray'
 
 ext {
   groupId = 'com.tbuonomo' // package name of the project
-  artifactId = "magic-shape-path" // module name of the library
+  artifactId = "morph-bottom-navigation" // module name of the library
   libVersion = "1.0.0"
 }
 version = libVersion
@@ -12,12 +12,10 @@ group = groupId
 def propsFile = rootProject.file('keystore.properties')
 
 bintray {
-  if (propsFile.exists()) {
-    def props = new Properties()
-    props.load(new FileInputStream(propsFile))
-    key = file(props['bintrayKey'])
-    user = file(props['bintrayUser'])
-  }
+  def props = new Properties()
+  props.load(new FileInputStream(propsFile))
+  key = props.getProperty("bintrayKey")
+  user = props.getProperty("bintrayUser")
   configurations = ['archives']
   publish = true //[Default: false] Whether version should be auto published after an upload
   override = false //[Default: false] Whether to override version artifacts already published
@@ -26,7 +24,7 @@ bintray {
   // properties (like userOrg, desc, etc).
   pkg {
     repo = "maven" //bintray repo
-    name = "magic-shape-path" //bintray package
+    name = "morph-bottom-navigation" //bintray package
     version {
       name = libVersion
     }

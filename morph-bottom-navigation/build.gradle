@@ -36,9 +36,9 @@ dependencies {
   androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-  implementation 'androidx.core:core-ktx:1.0.0-alpha1'
+  implementation 'androidx.core:core-ktx:1.0.0-alpha3'
   api 'com.google.android.material:material:1.0.0-alpha3'
-  implementation 'com.tbuonomo:magicshapepath:1.0.0-alpha3'
+  api 'com.tbuonomo:magicshapepath:1.0.0-alpha3'
 }
 
 

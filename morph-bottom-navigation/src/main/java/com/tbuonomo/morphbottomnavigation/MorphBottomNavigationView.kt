@@ -110,9 +110,9 @@ class MorphBottomNavigationView : BottomNavigationView, OnNavigationItemSelected
     materialShapeDrawable.isShadowEnabled = true
     materialShapeDrawable.paintStyle = Style.FILL
     materialShapeDrawable.setTint(backgroundTint)
-    background = materialShapeDrawable
 
-    val menuParams = bottomNavigationMenuView?.layoutParams as FrameLayout.LayoutParams
+    background = materialShapeDrawable
+    val menuParams = bottomNavigationMenuView.layoutParams as FrameLayout.LayoutParams
     menuParams.gravity = (Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL)
 
     setOnNavigationItemSelectedListener(this)
