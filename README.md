@@ -10,6 +10,11 @@ Don't forget to star the project if you like it!
  == ![heart](https://user-images.githubusercontent.com/15737675/39397367-6e312c2e-4afe-11e8-9fbf-32001b0165a1.png)
  
  And feel free to submit issues and enhancement requests !
+ 
+ ![ezgif com-video-to-gif](https://user-images.githubusercontent.com/15737675/41736506-026b6fd6-758d-11e8-9be6-7bc217aaa1e8.gif)
+![ezgif com-video-to-gif 1](https://user-images.githubusercontent.com/15737675/41736508-03b14cf8-758d-11e8-8bef-3909528f405d.gif)
+![ezgif com-video-to-gif 2](https://user-images.githubusercontent.com/15737675/41736510-04dc9ce0-758d-11e8-9951-11d924ebc6b0.gif)
+
 
 ## How to
 #### Gradle
