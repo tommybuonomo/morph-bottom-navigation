@@ -4,7 +4,7 @@ apply plugin: 'com.jfrog.bintray'
 ext {
   groupId = 'com.tbuonomo' // package name of the project
   artifactId = "morph-bottom-navigation" // module name of the library
-  libVersion = "1.0.0"
+  libVersion = "1.0.1"
 }
 version = libVersion
 group = groupId
@@ -12,10 +12,12 @@ group = groupId
 def propsFile = rootProject.file('keystore.properties')
 
 bintray {
-  def props = new Properties()
-  props.load(new FileInputStream(propsFile))
-  key = props.getProperty("bintrayKey")
-  user = props.getProperty("bintrayUser")
+  if (propsFile.exists()) {
+    def props = new Properties()
+    props.load(new FileInputStream(propsFile))
+    key = props.getProperty("bintrayKey")
+    user = props.getProperty("bintrayUser")
+  }
   configurations = ['archives']
   publish = true //[Default: false] Whether version should be auto published after an upload
   override = false //[Default: false] Whether to override version artifacts already published
