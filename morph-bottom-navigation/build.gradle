@@ -38,7 +38,7 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
   implementation 'androidx.core:core-ktx:1.0.0-alpha3'
   api 'com.google.android.material:material:1.0.0-alpha3'
-  api 'com.tbuonomo:magicshapepath:1.0.0-alpha3'
+  api 'com.github.MarsXan:magic-shape-path:1.0.1'
 }
 
 
