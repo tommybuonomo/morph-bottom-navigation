@@ -4,7 +4,7 @@ apply plugin: 'com.jfrog.bintray'
 ext {
   groupId = 'com.tbuonomo' // package name of the project
   artifactId = "morph-bottom-navigation" // module name of the library
-  libVersion = "1.0.1"
+  libVersion = "1.0.2"
 }
 version = libVersion
 group = groupId

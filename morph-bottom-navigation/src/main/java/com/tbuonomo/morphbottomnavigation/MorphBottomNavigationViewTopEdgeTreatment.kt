@@ -26,7 +26,7 @@ class MorphBottomNavigationViewTopEdgeTreatment(private val bottomNavigationMenu
   var lastSelectedItem: Int = 0
   var selectedItem: Int = 0
 
-  override fun getEdgePath(length: Float, interpolation: Float, shapePath: ShapePath) {
+  override fun getEdgePath(length: Float, center:Float,interpolation: Float, shapePath: ShapePath) {
     easyShapePath = MagicShapePath.create(0f, morphVerticalOffset, length, morphVerticalOffset)
 
     bottomNavigationMenuView.forEachIndexed { i, view ->

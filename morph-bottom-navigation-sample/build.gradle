@@ -5,11 +5,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-  compileSdkVersion 28
+  compileSdkVersion 30
   defaultConfig {
     applicationId "com.tbuonomo.morphbottomnavigation"
     minSdkVersion 19
-    targetSdkVersion 28
+    targetSdkVersion 30
     versionCode 1
     versionName "1.0"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -20,17 +20,20 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
+  kotlinOptions {
+    jvmTarget = '1.8'
+  }
 }
 
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-  testImplementation 'junit:junit:4.12'
-  androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
-  androidTestImplementation 'androidx.test:rules:1.1.0-alpha3'
-  androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+  testImplementation 'junit:junit:4.13.1'
+  androidTestImplementation 'androidx.test:runner:1.4.0-alpha04'
+  androidTestImplementation 'androidx.test:rules:1.4.0-alpha04'
+  androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0-alpha04'
 
-  implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+  implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
   implementation project(':morph-bottom-navigation')
 //  implementation 'com.tbuonomo:morph-bottom-navigation:1.0.1'
 }
